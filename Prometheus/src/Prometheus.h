@@ -1,0 +1,11 @@
+//
+// Created by Marcel on 1/23/2024.
+//
+
+#pragma once
+
+#include "Prometheus/Core/Application.h"
+
+//////------------Entry Point------------/////////////////////////////////
+#include "Prometheus/Core/EntryPoint.h"
+//////////////////////////////////////////////////////////////////////////
