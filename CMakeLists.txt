@@ -11,6 +11,10 @@ if (WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_compile_definitions(PS_PLATFORM_WINDOWS)
 endif ()
 
+if (UNIX AND NOT APPLE AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+    add_compile_definitions(PS_PLATFORM_LINUX)
+endif ()
+
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel" CACHE STRING "" FORCE)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_compile_definitions(PS_DEBUG)

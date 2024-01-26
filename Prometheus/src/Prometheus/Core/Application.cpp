@@ -10,10 +10,10 @@ namespace Prometheus {
     void Application::Run() {
         std::cout << "ES LAUEFT!" << std::endl;
 
-        int* temp = nullptr;
-        *temp = 5;
+        //int* temp = nullptr;
+        //*temp = 5;
 
-        int const * const * const test = &temp;
+        //int const * const * const test = &temp;
 
     }
 }

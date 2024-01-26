@@ -18,10 +18,23 @@ add_dependencies(Sandbox Prometheus)
 target_link_libraries(Sandbox Prometheus)
 
 # Copy the DLL to the executable directory
-add_custom_command(
-        TARGET Sandbox
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/libPrometheusEngine.dll
-        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libPrometheusEngine.dll
-)
+
+if (DEFINED PS_PLATFORM_WINDOWS)
+    add_custom_command(
+            TARGET Sandbox
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/libPrometheusEngine.dll
+            ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libPrometheusEngine.dll
+    )
+endif ()
+
+if (DEFINED PS_PLATFORM_LINUX)
+    add_custom_command(
+            TARGET Sandbox
+            POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/libPrometheusEngine.so
+            ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libPrometheusEngine.so
+    )
+endif ()
