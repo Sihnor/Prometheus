@@ -1,0 +1,3 @@
+[submodule "Prometheus/vendor/GLFW/glfw"]
+	path = Prometheus/vendor/GLFW
+	url = https://github.com/glfw/glfw.git
