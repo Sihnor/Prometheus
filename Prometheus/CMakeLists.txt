@@ -17,7 +17,21 @@ set_target_properties(Prometheus PROPERTIES
         OBJECT_OUTPUT_DIRECTORY ${WORKSPACE_PATH}/bin/${OUTPUT_DIR}/${PROJECT_NAME}
 )
 
+add_subdirectory(vendor/GLFW)
+
+target_include_directories(${PROJECT_NAME}
+        PUBLIC vendor/GLFW/include
+)
+
+target_link_directories(${PROJECT_NAME}
+        PRIVATE vendor/GLFW/src
+)
+
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${WORKSPACE_PATH}/bin/${CMAKE_BUILD_TYPE}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${PROJECT_NAME} CACHE STRING "PrometheusDll Output Dir")
 
 # Definiere PS_BUILD_DLL, um anzuzeigen, dass die Bibliothek als DLL erstellt wird
 target_compile_definitions(Prometheus PRIVATE PS_BUILD_DLL)
+
+target_link_libraries(Prometheus
+        glfw
+)
